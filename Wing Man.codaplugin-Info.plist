@@ -6,8 +6,14 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFile</key>
+	<string>Icon.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.adamjarret.WingManPlugIn</string>
+	<key>CFBundleName</key>
+	<string>Wing Man Plug-in</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2010 Adam Jarret &lt;adamjarret.com&gt;</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>NSPrincipalClass</key>
@@ -19,6 +25,10 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>20</string>
+	<string>38</string>
+	<key>SUFeedURL</key>
+	<string>http://adamjarret.com/updates/coda-wing-man/plugin/changelog.xml</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
 </dict>
 </plist>

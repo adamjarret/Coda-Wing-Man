@@ -19,7 +19,14 @@
 		controller = aController;
 		
 		windowController = [[WMWindowController alloc] init];
+		windowController.bundlePath = [myBundle bundlePath];
 
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(willReloadTabList:)
+													 name:@"WingMan_willReloadTabList"
+												   object:windowController];
+
+		
 		[controller registerActionWithTitle:NSLocalizedString(@"Show/Hide Wing Man", @"Show/Hide Wing Man")
 					  underSubmenuWithTitle:nil
 									 target:self
@@ -46,6 +53,11 @@
 	return @"Wing Man";
 }
 
+- (void) willReloadTabList:(id)sender
+{
+	windowController.sitePath = [[controller focusedTextView:self] siteLocalPath];	
+}
+
 #pragma mark Show and Hide Panel
 
 - (void)toggleWingMan
@@ -56,7 +68,6 @@
 	}
 	else
 	{
-		windowController.sitePath = [[controller focusedTextView:self] siteLocalPath];
 		[windowController showWindow:self];
 	}	
 }
@@ -65,6 +76,7 @@
 
 - (void)dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[windowController release];
 	[super dealloc];
 }

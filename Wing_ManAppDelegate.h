@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "WMWindowController.h"
+#import "WMUpdater+App.h"
 
 @interface Wing_ManAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
@@ -18,5 +19,6 @@
 
 - (IBAction) toggleWingMan:(id)sender;
 - (IBAction) reloadTabList:(id)sender;
+- (IBAction) checkForUpdate:(id)sender;
 
 @end

@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* Wing_ManAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* Wing_ManAppDelegate.m */; };
+		662F090A129041B2004BB006 /* WMUpdater+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F0909129041B2004BB006 /* WMUpdater+App.m */; };
+		662F09481290450C004BB006 /* Wing Man Updater.app in Resources */ = {isa = PBXBuildFile; fileRef = 66BD6FEE128FBDEE00A1D38E /* Wing Man Updater.app */; };
+		662F095512904CFC004BB006 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 66E19CDA128DE6EE009F756F /* README.md */; };
+		664847931293B59200920E71 /* NSDictionary+WingMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 664847921293B59200920E71 /* NSDictionary+WingMan.m */; };
+		664847941293B59200920E71 /* NSDictionary+WingMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 664847921293B59200920E71 /* NSDictionary+WingMan.m */; };
+		664847951293B59200920E71 /* NSDictionary+WingMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 664847921293B59200920E71 /* NSDictionary+WingMan.m */; };
 		665BBD17128D95CF008C2C2D /* ImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 665BBD16128D95CF008C2C2D /* ImageTextCell.m */; };
 		665BBD18128D95CF008C2C2D /* ImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 665BBD16128D95CF008C2C2D /* ImageTextCell.m */; };
 		665BBE01128DBF87008C2C2D /* OptionsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 665BBE00128DBF87008C2C2D /* OptionsButton.m */; };
@@ -16,16 +22,71 @@
 		6666EE77128C9FDE0095E8C9 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6666EE76128C9FDE0095E8C9 /* Icon.icns */; };
 		666EB695128A66EA00871A35 /* WingMan.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666EB694128A66EA00871A35 /* WingMan.xib */; };
 		666EB698128A66F500871A35 /* WMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666EB697128A66F500871A35 /* WMWindowController.m */; };
+		66724D69128F055F00B89303 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 66724D67128F055F00B89303 /* dsa_pub.pem */; };
 		66823D7F128A7E0900391E4C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		66823D82128A7E2400391E4C /* WingMan.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666EB694128A66EA00871A35 /* WingMan.xib */; };
 		66823D8C128A7E4900391E4C /* WMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666EB697128A66F500871A35 /* WMWindowController.m */; };
 		66823D8F128A7E6500391E4C /* WingManPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 66823D8E128A7E6500391E4C /* WingManPlugIn.m */; };
-		66E19CDB128DE6EE009F756F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 66E19CDA128DE6EE009F756F /* README.md */; };
+		66A48D691291E5F600B6C39B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 66724D67128F055F00B89303 /* dsa_pub.pem */; };
+		66A48D741291E6B400B6C39B /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6666EE76128C9FDE0095E8C9 /* Icon.icns */; };
+		66A48D911291E79000B6C39B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 66A48D851291E78400B6C39B /* Sparkle.framework */; };
+		66A48DAE1291E87D00B6C39B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A48D851291E78400B6C39B /* Sparkle.framework */; };
+		66A48DE41291EB4F00B6C39B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A48D851291E78400B6C39B /* Sparkle.framework */; };
+		66A48DE71291EB5400B6C39B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 66A48D851291E78400B6C39B /* Sparkle.framework */; };
+		66BD6FC3128FBA9B00A1D38E /* WMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */; };
+		66BD6FC4128FBA9B00A1D38E /* WMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */; };
+		66BD6FF8128FBE6600A1D38E /* WingManUpdaterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD6FF7128FBE6600A1D38E /* WingManUpdaterAppDelegate.m */; };
+		66BD6FF9128FBE8B00A1D38E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		66BD6FFC128FBEA300A1D38E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		66BD7047128FC24500A1D38E /* WingManUpdater.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66BD7046128FC24500A1D38E /* WingManUpdater.xib */; };
 		66E19CDC128DE6EE009F756F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 66E19CDA128DE6EE009F756F /* README.md */; };
+		66F284791290D69400CDD7E9 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6666EE76128C9FDE0095E8C9 /* Icon.icns */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66F283D01290C5DD00CDD7E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66BD6FED128FBDEE00A1D38E;
+			remoteInfo = "Wing Man Updater";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		66724D5C128EFF6800B89303 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				66A48DE71291EB5400B6C39B /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66724D65128EFFC500B89303 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66BD708C128FC4B300A1D38E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				66A48D911291E79000B6C39B /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -38,6 +99,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		662F0908129041B2004BB006 /* WMUpdater+App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WMUpdater+App.h"; sourceTree = "<group>"; };
+		662F0909129041B2004BB006 /* WMUpdater+App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WMUpdater+App.m"; sourceTree = "<group>"; };
+		664847911293B59200920E71 /* NSDictionary+WingMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WingMan.h"; sourceTree = "<group>"; };
+		664847921293B59200920E71 /* NSDictionary+WingMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WingMan.m"; sourceTree = "<group>"; };
 		665BBD15128D95CF008C2C2D /* ImageTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTextCell.h; sourceTree = "<group>"; };
 		665BBD16128D95CF008C2C2D /* ImageTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTextCell.m; sourceTree = "<group>"; };
 		665BBDFF128DBF87008C2C2D /* OptionsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsButton.h; sourceTree = "<group>"; };
@@ -46,11 +111,20 @@
 		666EB694128A66EA00871A35 /* WingMan.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WingMan.xib; sourceTree = "<group>"; };
 		666EB696128A66F500871A35 /* WMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMWindowController.h; sourceTree = "<group>"; };
 		666EB697128A66F500871A35 /* WMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMWindowController.m; sourceTree = "<group>"; };
+		66724D67128F055F00B89303 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		66823D76128A7DCE00391E4C /* Wing Man.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wing Man.codaplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66823D77128A7DCE00391E4C /* Wing Man.codaplugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wing Man.codaplugin-Info.plist"; sourceTree = "<group>"; };
 		66823D7E128A7DF800391E4C /* CodaPlugInsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaPlugInsController.h; sourceTree = "<group>"; };
 		66823D8D128A7E6500391E4C /* WingManPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WingManPlugIn.h; sourceTree = "<group>"; };
 		66823D8E128A7E6500391E4C /* WingManPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WingManPlugIn.m; sourceTree = "<group>"; };
+		66A48D851291E78400B6C39B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		66BD6FC1128FBA9B00A1D38E /* WMUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMUpdater.h; sourceTree = "<group>"; };
+		66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMUpdater.m; sourceTree = "<group>"; };
+		66BD6FEE128FBDEE00A1D38E /* Wing Man Updater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wing Man Updater.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66BD6FF0128FBDEE00A1D38E /* Wing Man Updater-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wing Man Updater-Info.plist"; sourceTree = "<group>"; };
+		66BD6FF6128FBE6600A1D38E /* WingManUpdaterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WingManUpdaterAppDelegate.h; sourceTree = "<group>"; };
+		66BD6FF7128FBE6600A1D38E /* WingManUpdaterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WingManUpdaterAppDelegate.m; sourceTree = "<group>"; };
+		66BD7046128FC24500A1D38E /* WingManUpdater.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WingManUpdater.xib; sourceTree = "<group>"; };
 		66E19CDA128DE6EE009F756F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Wing_Man-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wing_Man-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Wing Man.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wing Man.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,10 +139,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66BD6FEC128FBDEE00A1D38E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66A48DAE1291E87D00B6C39B /* Sparkle.framework in Frameworks */,
+				66BD6FFC128FBEA300A1D38E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A48DE41291EB4F00B6C39B /* Sparkle.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +165,8 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* Wing_ManAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* Wing_ManAppDelegate.m */,
+				662F0908129041B2004BB006 /* WMUpdater+App.h */,
+				662F0909129041B2004BB006 /* WMUpdater+App.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -89,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				66A48D851291E78400B6C39B /* Sparkle.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -108,6 +195,7 @@
 			children = (
 				8D1107320486CEB800E47090 /* Wing Man.app */,
 				66823D76128A7DCE00391E4C /* Wing Man.codaplugin */,
+				66BD6FEE128FBDEE00A1D38E /* Wing Man Updater.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,7 +205,8 @@
 			children = (
 				66823D6C128A7D3200391E4C /* Shared */,
 				66823D6B128A7D2600391E4C /* App */,
-				66823D6A128A7D1E00391E4C /* Coda Plugin */,
+				66823D6A128A7D1E00391E4C /* Coda Plug-in */,
+				66BD6FC0128FB97800A1D38E /* Plug-in Updater */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -128,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				256AC3F00F4B6AF500CF3369 /* Wing_Man_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -136,7 +224,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6666EE76128C9FDE0095E8C9 /* Icon.icns */,
 				8D1107310486CEB800E47090 /* Wing_Man-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -153,15 +240,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		66823D6A128A7D1E00391E4C /* Coda Plugin */ = {
+		66823D6A128A7D1E00391E4C /* Coda Plug-in */ = {
 			isa = PBXGroup;
 			children = (
-				66823D7E128A7DF800391E4C /* CodaPlugInsController.h */,
-				66823D77128A7DCE00391E4C /* Wing Man.codaplugin-Info.plist */,
-				66823D8D128A7E6500391E4C /* WingManPlugIn.h */,
-				66823D8E128A7E6500391E4C /* WingManPlugIn.m */,
+				66A48E361291EF7400B6C39B /* Classes */,
+				66A48E371291EF9500B6C39B /* Resources */,
 			);
-			name = "Coda Plugin";
+			name = "Coda Plug-in";
 			sourceTree = "<group>";
 		};
 		66823D6B128A7D2600391E4C /* App */ = {
@@ -177,16 +262,84 @@
 		66823D6C128A7D3200391E4C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				66A48E341291EF2900B6C39B /* Classes */,
+				66F284701290D64200CDD7E9 /* Resources */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		66A48E341291EF2900B6C39B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
 				666EB696128A66F500871A35 /* WMWindowController.h */,
 				666EB697128A66F500871A35 /* WMWindowController.m */,
 				665BBD15128D95CF008C2C2D /* ImageTextCell.h */,
 				665BBD16128D95CF008C2C2D /* ImageTextCell.m */,
 				665BBDFF128DBF87008C2C2D /* OptionsButton.h */,
 				665BBE00128DBF87008C2C2D /* OptionsButton.m */,
+				66BD6FC1128FBA9B00A1D38E /* WMUpdater.h */,
+				66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				664847911293B59200920E71 /* NSDictionary+WingMan.h */,
+				664847921293B59200920E71 /* NSDictionary+WingMan.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		66A48E351291EF6600B6C39B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				66BD6FF6128FBE6600A1D38E /* WingManUpdaterAppDelegate.h */,
+				66BD6FF7128FBE6600A1D38E /* WingManUpdaterAppDelegate.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		66A48E361291EF7400B6C39B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				66823D7E128A7DF800391E4C /* CodaPlugInsController.h */,
+				66823D8D128A7E6500391E4C /* WingManPlugIn.h */,
+				66823D8E128A7E6500391E4C /* WingManPlugIn.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		66A48E371291EF9500B6C39B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66823D77128A7DCE00391E4C /* Wing Man.codaplugin-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		66BD6FC0128FB97800A1D38E /* Plug-in Updater */ = {
+			isa = PBXGroup;
+			children = (
+				66A48E351291EF6600B6C39B /* Classes */,
+				66F284711290D66100CDD7E9 /* Resources */,
+			);
+			name = "Plug-in Updater";
+			sourceTree = "<group>";
+		};
+		66F284701290D64200CDD7E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6666EE76128C9FDE0095E8C9 /* Icon.icns */,
 				666EB694128A66EA00871A35 /* WingMan.xib */,
 				66E19CDA128DE6EE009F756F /* README.md */,
+				66724D67128F055F00B89303 /* dsa_pub.pem */,
 			);
-			name = Shared;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		66F284711290D66100CDD7E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66BD7046128FC24500A1D38E /* WingManUpdater.xib */,
+				66BD6FF0128FBDEE00A1D38E /* Wing Man Updater-Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,25 +350,48 @@
 			buildConfigurationList = 66823D7A128A7DCE00391E4C /* Build configuration list for PBXNativeTarget "Wing Man.codaplugin" */;
 			buildPhases = (
 				66823D72128A7DCE00391E4C /* Resources */,
+				66724D65128EFFC500B89303 /* CopyFiles */,
 				66823D73128A7DCE00391E4C /* Sources */,
 				66823D74128A7DCE00391E4C /* Frameworks */,
+				662F096C12904DD2004BB006 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				66F283D11290C5DD00CDD7E9 /* PBXTargetDependency */,
 			);
 			name = "Wing Man.codaplugin";
 			productName = "Wing Man.codaplugin";
 			productReference = 66823D76128A7DCE00391E4C /* Wing Man.codaplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
+		66BD6FED128FBDEE00A1D38E /* Wing Man Updater */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66BD6FF3128FBDEF00A1D38E /* Build configuration list for PBXNativeTarget "Wing Man Updater" */;
+			buildPhases = (
+				66BD6FEA128FBDEE00A1D38E /* Resources */,
+				66BD708C128FC4B300A1D38E /* CopyFiles */,
+				66BD6FEB128FBDEE00A1D38E /* Sources */,
+				66BD6FEC128FBDEE00A1D38E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Wing Man Updater";
+			productName = "Wing Man Updater";
+			productReference = 66BD6FEE128FBDEE00A1D38E /* Wing Man Updater.app */;
+			productType = "com.apple.product-type.application";
+		};
 		8D1107260486CEB800E47090 /* Wing Man */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Wing Man" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
+				66724D5C128EFF6800B89303 /* CopyFiles */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				66724D6D128F0CAE00B89303 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -248,6 +424,7 @@
 			targets = (
 				8D1107260486CEB800E47090 /* Wing Man */,
 				66823D75128A7DCE00391E4C /* Wing Man.codaplugin */,
+				66BD6FED128FBDEE00A1D38E /* Wing Man Updater */,
 			);
 		};
 /* End PBXProject section */
@@ -257,8 +434,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A48D741291E6B400B6C39B /* Icon.icns in Resources */,
+				66A48D691291E5F600B6C39B /* dsa_pub.pem in Resources */,
+				662F095512904CFC004BB006 /* README.md in Resources */,
+				662F09481290450C004BB006 /* Wing Man Updater.app in Resources */,
 				66823D82128A7E2400391E4C /* WingMan.xib in Resources */,
-				66E19CDB128DE6EE009F756F /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66BD6FEA128FBDEE00A1D38E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66F284791290D69400CDD7E9 /* Icon.icns in Resources */,
+				66BD7047128FC24500A1D38E /* WingManUpdater.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,10 +460,40 @@
 				666EB695128A66EA00871A35 /* WingMan.xib in Resources */,
 				6666EE77128C9FDE0095E8C9 /* Icon.icns in Resources */,
 				66E19CDC128DE6EE009F756F /* README.md in Resources */,
+				66724D69128F055F00B89303 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		662F096C12904DD2004BB006 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n[ $BUILD_STYLE = Release ] || { echo Skip signing for Debug build style; exit; }\n\nVERSION=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.codaplugin/Contents/Info\" CFBundleVersion)\nVERSIONSTRING=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.codaplugin/Contents/Info\" CFBundleShortVersionString)\nDOWNLOAD_BASE_URL=\"http://adamjarret.com/updates/coda-wing-man/plugin/files/\"\nRELEASENOTES_URL=\"http://adamjarret.com/updates/coda-wing-man/plugin/release-notes.html#version-$VERSION\"\n\nARCHIVE_FILENAME=\"$PROJECT_NAME Plugin-$VERSIONSTRING.zip\"\nDOWNLOAD_URL=\"$DOWNLOAD_BASE_URL$ARCHIVE_FILENAME\"\n#KEYCHAIN_PRIVKEY_NAME=\"Wing Man Sparkle Private Key\"\n\nWD=$PWD\n\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -f \"$PROJECT_NAME\"*.zip\nditto -ck --keepParent \"$PROJECT_NAME.codaplugin\" \"$ARCHIVE_FILENAME\"\n\nSIZE=$(stat -f %z \"$ARCHIVE_FILENAME\")\nPUBDATE=$(LC_TIME=en_US date +\"%a, %d %b %G %T %z\")\n#PRIV_KEY=$(security find-generic-password -g -s \"$KEYCHAIN_PRIVKEY_NAME\" 2>&1 1>/dev/null | perl -pe '($_) = /\"(.+)\"/; s/\\\\012/\\n/g' | perl -MXML::LibXML -e 'print XML::LibXML->new()->parse_file(\"-\")->findvalue(q(//string[preceding-sibling::key[1] = \"NOTE\"]))')\n\nSIGNATURE=$(openssl dgst -sha1 -binary < \"$ARCHIVE_FILENAME\" | openssl dgst -dss1 -sign \"/Users/Adam/Sparkle Keys/Wing Man/dsa_priv.pem\" | openssl enc -base64)\n\n#[ $SIGNATURE ] || { echo \"Unable to create signature\"; exit; }\n\ncat >> ~/Desktop/item.xml <<EOF\n\t\t<item>\n\t\t\t<title>Version $VERSIONSTRING (Build $VERSION)</title>\n\t\t\t<sparkle:releaseNotesLink>$RELEASENOTES_URL</sparkle:releaseNotesLink>\n\t\t\t<pubDate>$PUBDATE</pubDate>\n\t\t\t<enclosure\n\t\t\t\turl=\"$DOWNLOAD_URL\"\n\t\t\t\tsparkle:version=\"$VERSION\"\n\t\t\t\tsparkle:shortVersionString=\"1.0\"\n\t\t\t\ttype=\"application/octet-stream\"\n\t\t\t\tlength=\"$SIZE\"\n\t\t\t\tsparkle:dsaSignature=\"$SIGNATURE\"\n\t\t\t/>\n\t\t</item>\nEOF\n";
+		};
+		66724D6D128F0CAE00B89303 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n[ $BUILD_STYLE = Release ] || { echo Skip signing for Debug build style; exit; }\n\nVERSION=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.app/Contents/Info\" CFBundleVersion)\nVERSIONSTRING=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.app/Contents/Info\" CFBundleShortVersionString)\nDOWNLOAD_BASE_URL=\"http://adamjarret.com/updates/coda-wing-man/app/files/\"\nRELEASENOTES_URL=\"http://adamjarret.com/updates/coda-wing-man/app/release-notes.html#version-$VERSION\"\n\nARCHIVE_FILENAME=\"$PROJECT_NAME-$VERSIONSTRING.zip\"\nDOWNLOAD_URL=\"$DOWNLOAD_BASE_URL$ARCHIVE_FILENAME\"\nKEYCHAIN_PRIVKEY_NAME=\"Wing Man Sparkle Private Key\"\n\nWD=$PWD\n\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -f \"$PROJECT_NAME\"*.zip\nditto -ck --keepParent \"$PROJECT_NAME.app\" \"$ARCHIVE_FILENAME\"\n\nSIZE=$(stat -f %z \"$ARCHIVE_FILENAME\")\nPUBDATE=$(LC_TIME=en_US date +\"%a, %d %b %G %T %z\")\n#PRIV_KEY=$(security find-generic-password -g -s \"$KEYCHAIN_PRIVKEY_NAME\" 2>&1 1>/dev/null | perl -pe '($_) = /\"(.+)\"/; s/\\\\012/\\n/g' | perl -MXML::LibXML -e 'print XML::LibXML->new()->parse_file(\"-\")->findvalue(q(//string[preceding-sibling::key[1] = \"NOTE\"]))')\n\nSIGNATURE=$(openssl dgst -sha1 -binary < \"$ARCHIVE_FILENAME\" | openssl dgst -dss1 -sign \"/Users/Adam/Sparkle Keys/Wing Man/dsa_priv.pem\" | openssl enc -base64)\n\n#[ $SIGNATURE ] || { echo \"Unable to create signature\"; exit; }\n\ncat >> ~/Desktop/item.xml <<EOF\n\t\t<item>\n\t\t\t<title>Version $VERSION</title>\n\t\t\t<sparkle:releaseNotesLink>$RELEASENOTES_URL</sparkle:releaseNotesLink>\n\t\t\t<pubDate>$PUBDATE</pubDate>\n\t\t\t<enclosure\n\t\t\t\turl=\"$DOWNLOAD_URL\"\n\t\t\t\tsparkle:version=\"$VERSION\"\n\t\t\t\tsparkle:shortVersionString=\"1.0\"\n\t\t\t\ttype=\"application/octet-stream\"\n\t\t\t\tlength=\"$SIZE\"\n\t\t\t\tsparkle:dsaSignature=\"$SIGNATURE\"\n\t\t\t/>\n\t\t</item>\nEOF\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		66823D73128A7DCE00391E4C /* Sources */ = {
@@ -285,6 +504,18 @@
 				66823D8F128A7E6500391E4C /* WingManPlugIn.m in Sources */,
 				665BBD18128D95CF008C2C2D /* ImageTextCell.m in Sources */,
 				665BBE01128DBF87008C2C2D /* OptionsButton.m in Sources */,
+				66BD6FC3128FBA9B00A1D38E /* WMUpdater.m in Sources */,
+				664847931293B59200920E71 /* NSDictionary+WingMan.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66BD6FEB128FBDEE00A1D38E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66BD6FF9128FBE8B00A1D38E /* main.m in Sources */,
+				66BD6FF8128FBE6600A1D38E /* WingManUpdaterAppDelegate.m in Sources */,
+				664847951293B59200920E71 /* NSDictionary+WingMan.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,10 +528,21 @@
 				666EB698128A66F500871A35 /* WMWindowController.m in Sources */,
 				665BBD17128D95CF008C2C2D /* ImageTextCell.m in Sources */,
 				665BBE02128DBF87008C2C2D /* OptionsButton.m in Sources */,
+				66BD6FC4128FBA9B00A1D38E /* WMUpdater.m in Sources */,
+				662F090A129041B2004BB006 /* WMUpdater+App.m in Sources */,
+				664847941293B59200920E71 /* NSDictionary+WingMan.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66F283D11290C5DD00CDD7E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66BD6FED128FBDEE00A1D38E /* Wing Man Updater */;
+			targetProxy = 66F283D01290C5DD00CDD7E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -328,6 +570,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -355,6 +601,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -374,11 +624,71 @@
 			};
 			name = Release;
 		};
+		66BD6FF1128FBDEF00A1D38E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Wing Man Updater-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Wing Man Updater";
+			};
+			name = Debug;
+		};
+		66BD6FF2128FBDEF00A1D38E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Wing Man Updater-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Wing Man Updater";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -396,6 +706,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Wing_Man_Prefix.pch;
@@ -439,6 +753,15 @@
 			buildConfigurations = (
 				66823D78128A7DCE00391E4C /* Debug */,
 				66823D79128A7DCE00391E4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66BD6FF3128FBDEF00A1D38E /* Build configuration list for PBXNativeTarget "Wing Man Updater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66BD6FF1128FBDEF00A1D38E /* Debug */,
+				66BD6FF2128FBDEF00A1D38E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

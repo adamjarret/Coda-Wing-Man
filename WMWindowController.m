@@ -7,7 +7,7 @@
 //
 
 #import "WMWindowController.h"
-
+#import "NSDictionary+WingMan.h"
 
 @implementation WMWindowController
 
@@ -16,6 +16,7 @@
 @synthesize wmTableFont;
 @synthesize userDefaultsController;
 @synthesize sitePath;
+@synthesize bundlePath;
 
 - (id)init
 {
@@ -23,28 +24,33 @@
 	
 	if(self = [super initWithWindowNibName:@"WingMan" owner:self])
 	{
-		theData = [[NSUserDefaults standardUserDefaults] dataForKey:@"wmTableFont"];
+		theData = [[NSUserDefaults standardUserDefaults] dataForKey:@"kWingMan_wmTableFont"];
 		if (theData != nil)
 			self.wmTableFont = (NSFont *)[NSUnarchiver unarchiveObjectWithData:theData];
 		else
 			wmTableFont = [NSFont systemFontOfSize:13.0];
 
-		theData = [[NSUserDefaults standardUserDefaults] dataForKey:@"wmTableTextColor"];
+		theData = [[NSUserDefaults standardUserDefaults] dataForKey:@"kWingMan_wmTableTextColor"];
 		if (theData != nil)
 			wmTableTextColor = (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
 		else
 			wmTableTextColor = [NSColor whiteColor];
 
-		if ([[NSUserDefaults standardUserDefaults] objectForKey:@"showFilePath"] != nil)
-			showFilePath = [[NSUserDefaults standardUserDefaults] boolForKey:@"showFilePath"];
+		if ([[NSUserDefaults standardUserDefaults] objectForKey:@"kWingMan_showFilePath"] != nil)
+			showFilePath = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_showFilePath"];
 		else
 			showFilePath = YES;
 		
-		alwaysOnTop = [[NSUserDefaults standardUserDefaults] boolForKey:@"alwaysOnTop"]; //returns NO if not set
+		alwaysOnTop = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_alwaysOnTop"]; //returns NO if not set
+		autoRefresh = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_autoRefresh"]; //returns NO if not set
+		sortByPath = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_sortByPath"]; //returns NO if not set
 		windowIsVisible = NO;
 		windowHasFocus = NO;
 		tabList = [[NSMutableArray alloc] initWithCapacity:1];
 		sitePath = nil;
+		bundlePath = nil;
+		wmUpdater = [[WMUpdater alloc] init];
+		checkForUpdatesAutomatically = NO;
 		[self setShouldCascadeWindows:NO];
 		[self calcRowHeight];		
 	}
@@ -54,7 +60,17 @@
 - (void) awakeFromNib
 {	
 	self.window.hidesOnDeactivate = !alwaysOnTop;
+	
+	if(bundlePath != nil)
+		wmUpdater.bundlePath = bundlePath;
+	
+	checkForUpdatesAutomatically = [wmUpdater automaticallyChecksForUpdates];
 
+	[wmTableView setAction:@selector(clickRow:)];
+	
+	if(checkForUpdatesAutomatically)
+		[wmUpdater checkForUpdatesInBackground];
+	
 	NSTableColumn* column = [[wmTableView tableColumns] objectAtIndex:0];
 	
 	ImageTextCell* cell = [[[ImageTextCell alloc] init] autorelease];	
@@ -64,12 +80,24 @@
 
 - (void) dealloc
 {
+	if(sitePath != nil)
+		[sitePath release];
+
+	if(bundlePath != nil)
+		[bundlePath release];
+
+	[wmUpdater release];
 	[tabList release];
 	[super dealloc];
 }
 
 - (IBAction) reloadTabList:(id)sender
 {	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"WingMan_willReloadTabList" object:self];
+
+	if(!windowIsVisible)
+		[self showWindow:self];
+	
 	NSDictionary *scriptError = [[NSDictionary alloc] init]; 
 	
 	NSString *scriptSource = @"set PathsList to {}\n"
@@ -104,6 +132,9 @@
 			  [file_name stringValue], @"file_path",
 			  nil]];
 	}
+	
+	if(sortByPath)
+		[tabList sortUsingSelector:@selector(compareByFilePath:)];
 
 	[wmTableView reloadData];
 }
@@ -114,18 +145,64 @@
 	[self calcRowHeight];
 	[wmTableView reloadData];
 	
-	[[NSUserDefaults standardUserDefaults] setBool:showFilePath forKey:@"showFilePath"];
+	[[NSUserDefaults standardUserDefaults] setBool:showFilePath forKey:@"kWingMan_showFilePath"];
 	[[NSUserDefaults standardUserDefaults] synchronize];	
 }
 
 - (IBAction) toggleAlwaysOnTop:(id)sender
 {
 	self.window.hidesOnDeactivate = alwaysOnTop;
-
+	
 	alwaysOnTop = !alwaysOnTop;
 	
-	[[NSUserDefaults standardUserDefaults] setBool:alwaysOnTop forKey:@"alwaysOnTop"];
+	[[NSUserDefaults standardUserDefaults] setBool:alwaysOnTop forKey:@"kWingMan_alwaysOnTop"];
 	[[NSUserDefaults standardUserDefaults] synchronize];	
+}
+
+- (IBAction) toggleAutoRefresh:(id)sender
+{
+	autoRefresh = !autoRefresh;
+	
+	[[NSUserDefaults standardUserDefaults] setBool:autoRefresh forKey:@"kWingMan_autoRefresh"];
+	[[NSUserDefaults standardUserDefaults] synchronize];	
+}
+
+- (IBAction) toggleSortByPath:(id)sender
+{
+	sortByPath = !sortByPath;
+	
+	[self reloadTabList:nil];
+	
+	[[NSUserDefaults standardUserDefaults] setBool:sortByPath forKey:@"kWingMan_sortByPath"];
+	[[NSUserDefaults standardUserDefaults] synchronize];	
+}
+
+- (IBAction) toggleCheckForUpdatesAutomatically:(id)sender
+{
+	checkForUpdatesAutomatically = !checkForUpdatesAutomatically;
+	
+	[wmUpdater setAutomaticallyChecksForUpdates:checkForUpdatesAutomatically];
+}
+
+- (IBAction) doNothing:(id)sender
+{
+	// This is bound to the version menu item so that it is not automatically disabled before the title can be set.
+}
+
+- (void) clickRow:(id)sender
+{
+	int rowIndex = [wmTableView clickedRow];
+	NSDictionary *scriptError = [[NSDictionary alloc] init]; 
+	
+	NSString *scriptSource = [NSString stringWithFormat:@"tell application \"Coda\" to open \"%@\"", [[tabList objectAtIndex:rowIndex] objectForKey:@"file_path"]];	
+	NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:scriptSource]; 
+	NSAppleEventDescriptor *result = [appleScript executeAndReturnError:&scriptError];
+	
+	if(result == nil) 
+		NSLog(@"AppleScript Error: %@", [scriptError description]);
+
+	if(autoRefresh)
+		[self reloadTabList:nil];
 }
 
 #pragma mark -
@@ -133,16 +210,41 @@
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+	NSBundle *bundle;
+	
 	if([menuItem tag] == 801)
 		[menuItem setState:(showFilePath ? NSOnState : NSOffState)];
 	else if([menuItem tag] == 802)
 		[menuItem setState:(alwaysOnTop ? NSOnState : NSOffState)];
+	else if([menuItem tag] == 803)
+		[menuItem setState:(checkForUpdatesAutomatically ? NSOnState : NSOffState)];
+	else if([menuItem tag] == 805)
+	{
+		if(bundlePath != nil)
+			bundle = [NSBundle bundleWithPath:bundlePath];
+		else
+			bundle = [NSBundle mainBundle];
+
+		[menuItem setTitle:[NSString stringWithFormat:@"%@ %@ (%@)", [bundle objectForInfoDictionaryKey:@"CFBundleName"], [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [bundle objectForInfoDictionaryKey:@"CFBundleVersion"]]];
+		return NO;
+	}
+	else if([menuItem tag] == 806)
+		[menuItem setState:(autoRefresh ? NSOnState : NSOffState)];
+	else if([menuItem tag] == 807)
+		[menuItem setState:(sortByPath ? NSOnState : NSOffState)];
+	
+	bundle = nil;
 	
 	return YES;
 }
 
 #pragma mark -
 #pragma mark Utility methods
+
+- (void) checkForUpdate:(id)sender
+{
+	[wmUpdater checkForUpdates:sender];
+}
 
 - (void)calcRowHeight
 {	
@@ -226,7 +328,7 @@
 	[self calcRowHeight];
 	[wmTableView reloadData];
 
-	[[NSUserDefaults standardUserDefaults] setObject:[NSArchiver archivedDataWithRootObject:wmTableFont] forKey:@"wmTableFont"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSArchiver archivedDataWithRootObject:wmTableFont] forKey:@"kWingMan_wmTableFont"];
 	[[NSUserDefaults standardUserDefaults] synchronize];	
 }
 
@@ -235,7 +337,7 @@
 	wmTableTextColor = [sender color];
 	[wmTableView reloadData];
 
-	[[NSUserDefaults standardUserDefaults] setObject:[NSArchiver archivedDataWithRootObject:wmTableTextColor] forKey:@"wmTableTextColor"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSArchiver archivedDataWithRootObject:wmTableTextColor] forKey:@"kWingMan_wmTableTextColor"];
 	[[NSUserDefaults standardUserDefaults] synchronize];	
 }
 
@@ -245,15 +347,6 @@
 
 - (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
 {
-	NSDictionary *scriptError = [[NSDictionary alloc] init]; 
-	
-	NSString *scriptSource = [NSString stringWithFormat:@"tell application \"Coda\" to open \"%@\"", [[tabList objectAtIndex:rowIndex] objectForKey:@"file_path"]];	
-	NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:scriptSource]; 
-	NSAppleEventDescriptor *result = [appleScript executeAndReturnError:&scriptError];
-		
-	if(result == nil) 
-		NSLog(@"AppleScript Error: %@", [scriptError description]); 
-	
 	return YES;
 }
 

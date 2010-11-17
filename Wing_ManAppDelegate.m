@@ -31,6 +31,11 @@
 	[windowController reloadTabList:sender];
 }
 
+- (IBAction) checkForUpdate:(id)sender
+{
+	[windowController checkForUpdate:sender];
+}
+
 #pragma mark -
 #pragma mark NSMenuValidation
 
