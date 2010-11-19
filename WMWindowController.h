@@ -30,13 +30,10 @@
 	BOOL windowHasFocus;
 	NSMutableArray *tabList;
 	NSString *sitePath;
-	NSString *bundlePath;
-	
-	NSUserDefaultsController *userDefaultsController;
+	NSString *bundlePath;	
 }
 
 @property (nonatomic, assign) IBOutlet NSTableView *wmTableView;
-@property (nonatomic, assign) IBOutlet NSUserDefaultsController *userDefaultsController;
 
 @property (nonatomic, readonly) BOOL windowIsVisible;
 @property (nonatomic, retain) NSFont *wmTableFont;

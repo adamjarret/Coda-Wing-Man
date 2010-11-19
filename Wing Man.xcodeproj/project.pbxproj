@@ -125,7 +125,7 @@
 		66BD6FF6128FBE6600A1D38E /* WingManUpdaterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WingManUpdaterAppDelegate.h; sourceTree = "<group>"; };
 		66BD6FF7128FBE6600A1D38E /* WingManUpdaterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WingManUpdaterAppDelegate.m; sourceTree = "<group>"; };
 		66BD7046128FC24500A1D38E /* WingManUpdater.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WingManUpdater.xib; sourceTree = "<group>"; };
-		66E19CDA128DE6EE009F756F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		66E19CDA128DE6EE009F756F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; wrapsLines = 1; };
 		8D1107310486CEB800E47090 /* Wing_Man-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wing_Man-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Wing Man.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wing Man.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */

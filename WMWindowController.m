@@ -14,7 +14,6 @@
 @synthesize wmTableView;
 @synthesize windowIsVisible;
 @synthesize wmTableFont;
-@synthesize userDefaultsController;
 @synthesize sitePath;
 @synthesize bundlePath;
 
@@ -60,6 +59,7 @@
 - (void) awakeFromNib
 {	
 	self.window.hidesOnDeactivate = !alwaysOnTop;
+	[self.window setFrameAutosaveName:@"WingMan"];
 	
 	if(bundlePath != nil)
 		wmUpdater.bundlePath = bundlePath;
@@ -298,12 +298,12 @@
 
 - (void)windowDidEndLiveResize:(NSNotification *)notification
 {
-	[userDefaultsController save:self]; //save window size
+	[[NSUserDefaults standardUserDefaults] synchronize]; //save window size
 }
 
 - (void)windowDidMove:(NSNotification *)notification
 {
-	[userDefaultsController save:self]; //save window position
+	[[NSUserDefaults standardUserDefaults] synchronize]; //save window position
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
