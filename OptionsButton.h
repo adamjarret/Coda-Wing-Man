@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <BWToolkitFramework/BWToolkitFramework.h>
 
 
-@interface OptionsButton : NSButton {
+@interface OptionsButton : BWTransparentButton {
 
 }
 

@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* Wing_ManAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* Wing_ManAppDelegate.m */; };
+		662BED1B129864AF006C21D6 /* WMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 662BED1A129864AF006C21D6 /* WMCell.m */; };
+		662BED1C129864AF006C21D6 /* WMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 662BED1A129864AF006C21D6 /* WMCell.m */; };
 		662F090A129041B2004BB006 /* WMUpdater+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 662F0909129041B2004BB006 /* WMUpdater+App.m */; };
 		662F09481290450C004BB006 /* Wing Man Updater.app in Resources */ = {isa = PBXBuildFile; fileRef = 66BD6FEE128FBDEE00A1D38E /* Wing Man Updater.app */; };
 		662F095512904CFC004BB006 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 66E19CDA128DE6EE009F756F /* README.md */; };
 		664847931293B59200920E71 /* NSDictionary+WingMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 664847921293B59200920E71 /* NSDictionary+WingMan.m */; };
 		664847941293B59200920E71 /* NSDictionary+WingMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 664847921293B59200920E71 /* NSDictionary+WingMan.m */; };
 		664847951293B59200920E71 /* NSDictionary+WingMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 664847921293B59200920E71 /* NSDictionary+WingMan.m */; };
-		665BBD17128D95CF008C2C2D /* ImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 665BBD16128D95CF008C2C2D /* ImageTextCell.m */; };
-		665BBD18128D95CF008C2C2D /* ImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 665BBD16128D95CF008C2C2D /* ImageTextCell.m */; };
 		665BBE01128DBF87008C2C2D /* OptionsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 665BBE00128DBF87008C2C2D /* OptionsButton.m */; };
 		665BBE02128DBF87008C2C2D /* OptionsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 665BBE00128DBF87008C2C2D /* OptionsButton.m */; };
 		6666EE77128C9FDE0095E8C9 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6666EE76128C9FDE0095E8C9 /* Icon.icns */; };
@@ -33,6 +33,12 @@
 		66A48DAE1291E87D00B6C39B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A48D851291E78400B6C39B /* Sparkle.framework */; };
 		66A48DE41291EB4F00B6C39B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A48D851291E78400B6C39B /* Sparkle.framework */; };
 		66A48DE71291EB5400B6C39B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 66A48D851291E78400B6C39B /* Sparkle.framework */; };
+		66A631EA129716DD009F830E /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A631E9129716DD009F830E /* BWToolkitFramework.framework */; };
+		66A6321B129716F1009F830E /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A631E9129716DD009F830E /* BWToolkitFramework.framework */; };
+		66A6321C12971701009F830E /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 66A631E9129716DD009F830E /* BWToolkitFramework.framework */; };
+		66A6321D12971705009F830E /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 66A631E9129716DD009F830E /* BWToolkitFramework.framework */; };
+		66A6326412971EF5009F830E /* RefreshButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6326312971EF5009F830E /* RefreshButton.m */; };
+		66A6326512971EF5009F830E /* RefreshButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6326312971EF5009F830E /* RefreshButton.m */; };
 		66BD6FC3128FBA9B00A1D38E /* WMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */; };
 		66BD6FC4128FBA9B00A1D38E /* WMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */; };
 		66BD6FF8128FBE6600A1D38E /* WingManUpdaterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD6FF7128FBE6600A1D38E /* WingManUpdaterAppDelegate.m */; };
@@ -63,6 +69,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				66A6321C12971701009F830E /* BWToolkitFramework.framework in CopyFiles */,
 				66A48DE71291EB5400B6C39B /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				66A6321D12971705009F830E /* BWToolkitFramework.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,12 +107,12 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		662BED19129864AF006C21D6 /* WMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCell.h; sourceTree = "<group>"; };
+		662BED1A129864AF006C21D6 /* WMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCell.m; sourceTree = "<group>"; };
 		662F0908129041B2004BB006 /* WMUpdater+App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WMUpdater+App.h"; sourceTree = "<group>"; };
 		662F0909129041B2004BB006 /* WMUpdater+App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WMUpdater+App.m"; sourceTree = "<group>"; };
 		664847911293B59200920E71 /* NSDictionary+WingMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WingMan.h"; sourceTree = "<group>"; };
 		664847921293B59200920E71 /* NSDictionary+WingMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WingMan.m"; sourceTree = "<group>"; };
-		665BBD15128D95CF008C2C2D /* ImageTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTextCell.h; sourceTree = "<group>"; };
-		665BBD16128D95CF008C2C2D /* ImageTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTextCell.m; sourceTree = "<group>"; };
 		665BBDFF128DBF87008C2C2D /* OptionsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsButton.h; sourceTree = "<group>"; };
 		665BBE00128DBF87008C2C2D /* OptionsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsButton.m; sourceTree = "<group>"; };
 		6666EE76128C9FDE0095E8C9 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = Resources/Icon.icns; sourceTree = "<group>"; };
@@ -118,6 +126,9 @@
 		66823D8D128A7E6500391E4C /* WingManPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WingManPlugIn.h; sourceTree = "<group>"; };
 		66823D8E128A7E6500391E4C /* WingManPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WingManPlugIn.m; sourceTree = "<group>"; };
 		66A48D851291E78400B6C39B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		66A631E9129716DD009F830E /* BWToolkitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
+		66A6326212971EF5009F830E /* RefreshButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshButton.h; sourceTree = "<group>"; };
+		66A6326312971EF5009F830E /* RefreshButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshButton.m; sourceTree = "<group>"; };
 		66BD6FC1128FBA9B00A1D38E /* WMUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMUpdater.h; sourceTree = "<group>"; };
 		66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMUpdater.m; sourceTree = "<group>"; };
 		66BD6FEE128FBDEE00A1D38E /* Wing Man Updater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wing Man Updater.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A6321B129716F1009F830E /* BWToolkitFramework.framework in Frameworks */,
 				66823D7F128A7E0900391E4C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A631EA129716DD009F830E /* BWToolkitFramework.framework in Frameworks */,
 				66A48DE41291EB4F00B6C39B /* Sparkle.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 			);
@@ -176,6 +189,7 @@
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				66A48D851291E78400B6C39B /* Sparkle.framework */,
+				66A631E9129716DD009F830E /* BWToolkitFramework.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -273,12 +287,14 @@
 			children = (
 				666EB696128A66F500871A35 /* WMWindowController.h */,
 				666EB697128A66F500871A35 /* WMWindowController.m */,
-				665BBD15128D95CF008C2C2D /* ImageTextCell.h */,
-				665BBD16128D95CF008C2C2D /* ImageTextCell.m */,
-				665BBDFF128DBF87008C2C2D /* OptionsButton.h */,
-				665BBE00128DBF87008C2C2D /* OptionsButton.m */,
+				662BED19129864AF006C21D6 /* WMCell.h */,
+				662BED1A129864AF006C21D6 /* WMCell.m */,
 				66BD6FC1128FBA9B00A1D38E /* WMUpdater.h */,
 				66BD6FC2128FBA9B00A1D38E /* WMUpdater.m */,
+				665BBDFF128DBF87008C2C2D /* OptionsButton.h */,
+				665BBE00128DBF87008C2C2D /* OptionsButton.m */,
+				66A6326212971EF5009F830E /* RefreshButton.h */,
+				66A6326312971EF5009F830E /* RefreshButton.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				664847911293B59200920E71 /* NSDictionary+WingMan.h */,
 				664847921293B59200920E71 /* NSDictionary+WingMan.m */,
@@ -502,10 +518,11 @@
 			files = (
 				66823D8C128A7E4900391E4C /* WMWindowController.m in Sources */,
 				66823D8F128A7E6500391E4C /* WingManPlugIn.m in Sources */,
-				665BBD18128D95CF008C2C2D /* ImageTextCell.m in Sources */,
 				665BBE01128DBF87008C2C2D /* OptionsButton.m in Sources */,
 				66BD6FC3128FBA9B00A1D38E /* WMUpdater.m in Sources */,
 				664847931293B59200920E71 /* NSDictionary+WingMan.m in Sources */,
+				66A6326412971EF5009F830E /* RefreshButton.m in Sources */,
+				662BED1C129864AF006C21D6 /* WMCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,11 +543,12 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* Wing_ManAppDelegate.m in Sources */,
 				666EB698128A66F500871A35 /* WMWindowController.m in Sources */,
-				665BBD17128D95CF008C2C2D /* ImageTextCell.m in Sources */,
 				665BBE02128DBF87008C2C2D /* OptionsButton.m in Sources */,
 				66BD6FC4128FBA9B00A1D38E /* WMUpdater.m in Sources */,
 				662F090A129041B2004BB006 /* WMUpdater+App.m in Sources */,
 				664847941293B59200920E71 /* NSDictionary+WingMan.m in Sources */,
+				66A6326512971EF5009F830E /* RefreshButton.m in Sources */,
+				662BED1B129864AF006C21D6 /* WMCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

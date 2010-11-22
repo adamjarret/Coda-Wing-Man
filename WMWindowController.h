@@ -7,11 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ImageTextCell.h"
+#import "WMCell.h"
 #import "WMUpdater.h"
 
 
-@interface WMWindowController : NSWindowController <NSTableViewDelegate,NSTableViewDataSource>
+@interface WMWindowController : NSWindowController <NSTableViewDelegate,NSTableViewDataSource,WMCellDelegate>
 {
 	WMUpdater *wmUpdater;
 	
@@ -37,6 +37,7 @@
 
 @property (nonatomic, readonly) BOOL windowIsVisible;
 @property (nonatomic, retain) NSFont *wmTableFont;
+@property (nonatomic, retain) NSColor *wmTableTextColor;
 @property (nonatomic, retain) NSString *sitePath;
 @property (nonatomic, retain) NSString *bundlePath;
 
@@ -49,7 +50,6 @@
 - (IBAction) doNothing:(id)sender;
 
 - (void)calcRowHeight;
-- (NSString*) shortenedFilePath:(NSString*)fullPath;
 - (void) checkForUpdate:(id)sender;
 
 @end

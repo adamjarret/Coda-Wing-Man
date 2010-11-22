@@ -65,7 +65,7 @@
 
 - (void)updaterWillRelaunchApplication:(SUUpdater *)updater
 {
-	NSDictionary *scriptError = [[NSDictionary alloc] init]; 
+	NSDictionary *scriptError; 
 	
 	NSString *scriptSource = @"tell application \"Coda\" to Quit"; 
 	

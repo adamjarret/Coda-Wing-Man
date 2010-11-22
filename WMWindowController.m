@@ -14,6 +14,7 @@
 @synthesize wmTableView;
 @synthesize windowIsVisible;
 @synthesize wmTableFont;
+@synthesize wmTableTextColor;
 @synthesize sitePath;
 @synthesize bundlePath;
 
@@ -23,17 +24,26 @@
 	
 	if(self = [super initWithWindowNibName:@"WingMan" owner:self])
 	{
+		self.wmTableTextColor = [NSColor whiteColor];
+		self.wmTableFont = [NSFont fontWithDescriptor:[[NSFont systemFontOfSize:13.0] fontDescriptor] size:13.0];
+
+		// Attempt to load saved font
 		theData = [[NSUserDefaults standardUserDefaults] dataForKey:@"kWingMan_wmTableFont"];
 		if (theData != nil)
-			self.wmTableFont = (NSFont *)[NSUnarchiver unarchiveObjectWithData:theData];
-		else
-			wmTableFont = [NSFont systemFontOfSize:13.0];
+		{
+			NSFont *font = (NSFont *)[NSUnarchiver unarchiveObjectWithData:theData];
+			if (font != nil)
+				self.wmTableFont = font;
+		}
 
+		// Attempt to load saved text color
 		theData = [[NSUserDefaults standardUserDefaults] dataForKey:@"kWingMan_wmTableTextColor"];
 		if (theData != nil)
-			wmTableTextColor = (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
-		else
-			wmTableTextColor = [NSColor whiteColor];
+		{
+			NSColor *color = (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
+			if (color != nil)
+				self.wmTableTextColor = color;			
+		}
 
 		if ([[NSUserDefaults standardUserDefaults] objectForKey:@"kWingMan_showFilePath"] != nil)
 			showFilePath = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_showFilePath"];
@@ -70,12 +80,6 @@
 	
 	if(checkForUpdatesAutomatically)
 		[wmUpdater checkForUpdatesInBackground];
-	
-	NSTableColumn* column = [[wmTableView tableColumns] objectAtIndex:0];
-	
-	ImageTextCell* cell = [[[ImageTextCell alloc] init] autorelease];	
-	[column setDataCell: cell];		
-	[cell setDataDelegate: self];	
 }
 
 - (void) dealloc
@@ -98,7 +102,7 @@
 	if(!windowIsVisible)
 		[self showWindow:self];
 	
-	NSDictionary *scriptError = [[NSDictionary alloc] init]; 
+	NSDictionary *scriptError; 
 	
 	NSString *scriptSource = @"set PathsList to {}\n"
 							  "tell application \"Coda\"\n"
@@ -117,25 +121,28 @@
 	NSAppleEventDescriptor *result = [appleScript executeAndReturnError:&scriptError];
 	
 	if(result == nil) 
-		NSLog(@"AppleScript Error: %@", [scriptError description]); 
-
-	[tabList removeAllObjects];
+		NSLog(@"AppleScript Error: %@", [scriptError description]);
 	
-	NSAppleEventDescriptor *file_name;
-	for(int i=1; i<=[result numberOfItems]; i++)
+	else
 	{
-		file_name = [result descriptorAtIndex:i];
-		if(file_name)
-			[tabList addObject:
-			 [NSDictionary dictionaryWithObjectsAndKeys:
-			  [[file_name stringValue] lastPathComponent], @"file_name",
-			  [file_name stringValue], @"file_path",
-			  nil]];
+
+		[tabList removeAllObjects];
+		
+		NSAppleEventDescriptor *file_name;
+		for(int i=1; i<=[result numberOfItems]; i++)
+		{
+			file_name = [result descriptorAtIndex:i];
+			if(file_name)
+				[tabList addObject:
+				 [NSDictionary dictionaryWithObjectsAndKeys:
+				  [file_name stringValue], @"file_path",
+				  nil]];
+		}
+		
+		if(sortByPath)
+			[tabList sortUsingSelector:@selector(compareByFilePath:)];
 	}
 	
-	if(sortByPath)
-		[tabList sortUsingSelector:@selector(compareByFilePath:)];
-
 	[wmTableView reloadData];
 }
 
@@ -192,17 +199,21 @@
 - (void) clickRow:(id)sender
 {
 	int rowIndex = [wmTableView clickedRow];
-	NSDictionary *scriptError = [[NSDictionary alloc] init]; 
 	
-	NSString *scriptSource = [NSString stringWithFormat:@"tell application \"Coda\" to open \"%@\"", [[tabList objectAtIndex:rowIndex] objectForKey:@"file_path"]];	
-	NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:scriptSource]; 
-	NSAppleEventDescriptor *result = [appleScript executeAndReturnError:&scriptError];
-	
-	if(result == nil) 
-		NSLog(@"AppleScript Error: %@", [scriptError description]);
+	if(rowIndex >= 0 && rowIndex < [tabList count])
+	{
+		NSDictionary *scriptError; 
+		NSString *scriptSource = [NSString stringWithFormat:@"tell application \"Coda\" to open \"%@\"",
+								  [[tabList objectAtIndex:rowIndex] objectForKey:@"file_path"]];	
+		NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:scriptSource]; 
+		NSAppleEventDescriptor *result = [appleScript executeAndReturnError:&scriptError];
+		
+		if(result == nil) 
+			NSLog(@"AppleScript Error: %@", [scriptError description]);
 
-	if(autoRefresh)
-		[self reloadTabList:nil];
+		if(autoRefresh)
+			[self reloadTabList:nil];
+	}
 }
 
 #pragma mark -
@@ -248,34 +259,8 @@
 
 - (void)calcRowHeight
 {	
-	wmTableRowHeight = wmTableFont.boundingRectForFont.size.height + (showFilePath ? [self secondaryFontForCell:nil data:nil].boundingRectForFont.size.height : 0);
-}
-
-- (NSString*) shortenedFilePath:(NSString*)fullPath
-{	
-	// Detect remote files (and do not display their real local path)
-	NSRange range = [fullPath rangeOfString:@"Library/Caches/TemporaryItems/Coda"];
-    if (range.location != NSNotFound)
-		return @"[remote]";
-	
-	// Remove site path if set
-	if(sitePath != nil)
-		fullPath = [fullPath stringByReplacingOccurrencesOfString:[[sitePath stringByDeletingLastPathComponent] stringByAppendingString:@"/"] withString:@""];
-	
-	// Shorten non-sitePath paths
-	NSString *tmp;
-
-	// Remove /Volumes/[Volume Name] prefix if file is on startup volume ('/')
-	tmp = [NSString stringWithFormat:@"/Volumes/%@", [[NSFileManager defaultManager] displayNameAtPath:@"/"]];
-	fullPath = [fullPath stringByReplacingOccurrencesOfString:tmp withString:@""];
-
-	// Collapse path to home to ~
-	tmp = NSHomeDirectory();
-	fullPath = [fullPath stringByReplacingOccurrencesOfString:tmp withString:@"~"];
-
-	tmp = nil;
-	
-	return fullPath;
+	wmTableRowHeight = wmTableFont.boundingRectForFont.size.height
+						+ (showFilePath ? [self secondaryFont].boundingRectForFont.size.height : 0);
 }
 
 #pragma mark -
@@ -380,47 +365,52 @@
 #pragma mark -
 #pragma mark Custom Cell data delegate methods
 
-- (NSImage*) iconForCell: (ImageTextCell*) cell data: (NSObject*) data
+- (NSColor*) primaryColorWithSelected: (BOOL)selected
 {
-	return nil;
+	return (selected ? (windowHasFocus ? [NSColor whiteColor] : [NSColor blackColor]) : wmTableTextColor);
 }
-- (NSString*) primaryTextForCell: (ImageTextCell*) cell data: (NSObject*) data
+
+- (NSColor*) secondaryColorWithSelected: (BOOL)selected
 {
-	NSString* filePath = (NSString*) data;
-	return [filePath lastPathComponent];
+	return (selected ? (windowHasFocus ? [NSColor whiteColor] : [NSColor blackColor]) : [NSColor lightGrayColor]);
 }
-- (NSColor*) primaryColorForCell: (ImageTextCell*) cell selected: (BOOL)selected
-{
-	return (selected && !windowHasFocus ? [NSColor blackColor] : wmTableTextColor);
-}
-- (NSColor*) secondaryColorForCell: (ImageTextCell*) cell selected: (BOOL)selected
-{
-	return (selected && !windowHasFocus ? [NSColor blackColor] : (selected ? [NSColor whiteColor] : [NSColor disabledControlTextColor]));
-}
-- (NSFont*) primaryFontForCell: (ImageTextCell*) cell data: (NSObject*) data
+
+- (NSFont*) primaryFont
 {
 	return wmTableFont;
 }
-- (NSString*) secondaryTextForCell: (ImageTextCell*) cell data: (NSObject*) data
-{
-	if(!showFilePath)
-		return nil;
-	
-	NSString* filePath = (NSString*) data;
-	return [self shortenedFilePath:filePath];
-}
-- (NSFont*) secondaryFontForCell: (ImageTextCell*) cell data: (NSObject*) data
+
+- (NSFont*) secondaryFont
 {
 	NSFontDescriptor *d = [wmTableFont fontDescriptor];
 	return [NSFont fontWithDescriptor:d size:d.pointSize * 0.8];
 }
-- (NSObject*) dataElementForCell: (ImageTextCell*) cell
-{
-	return [cell objectValue];
-}
-- (BOOL) disabledForCell: (ImageTextCell*) cell data: (NSObject*) data
-{
-	return NO;
+
+- (NSString*) shortenedFilePath:(NSString*)fullPath
+{	
+	// Detect remote files (and do not display their real local path)
+	NSRange range = [fullPath rangeOfString:@"Library/Caches/TemporaryItems/Coda"];
+    if (range.location != NSNotFound)
+		return @"[remote]";
+	
+	// Remove site path if set
+	if(sitePath != nil)
+		fullPath = [fullPath stringByReplacingOccurrencesOfString:[[sitePath stringByDeletingLastPathComponent] stringByAppendingString:@"/"] withString:@""];
+	
+	// Shorten non-sitePath paths
+	NSString *tmp;
+	
+	// Remove /Volumes/[Volume Name] prefix if file is on startup volume ('/')
+	tmp = [NSString stringWithFormat:@"/Volumes/%@", [[NSFileManager defaultManager] displayNameAtPath:@"/"]];
+	fullPath = [fullPath stringByReplacingOccurrencesOfString:tmp withString:@""];
+	
+	// Collapse path to home to ~
+	tmp = NSHomeDirectory();
+	fullPath = [fullPath stringByReplacingOccurrencesOfString:tmp withString:@"~"];
+	
+	tmp = nil;
+	
+	return fullPath;
 }
 
 @end
