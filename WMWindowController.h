@@ -49,7 +49,10 @@
 - (IBAction) toggleCheckForUpdatesAutomatically:(id)sender;
 - (IBAction) doNothing:(id)sender;
 
+- (void) openRowWithCoda:(int)rowIndex;
 - (void)calcRowHeight;
 - (void) checkForUpdate:(id)sender;
+- (NSFont*) secondaryFont;
+- (NSString*) shortenedFilePath:(NSString*)fullPath;
 
 @end

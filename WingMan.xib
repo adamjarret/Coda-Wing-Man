@@ -318,7 +318,7 @@
 					</object>
 					<object class="NSMenuItem" id="941202701">
 						<reference key="NSMenu" ref="446281557"/>
-						<string key="NSTitle">Refresh list when an item is selected</string>
+						<string key="NSTitle">Auto-refresh after a file is chosen</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="635444011"/>
@@ -795,7 +795,7 @@
 					<boolean value="YES"/>
 					<string>{80, 40}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{623, 461}, {300, 123}}</string>
+					<string>{{623, 461}, {282, 123}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

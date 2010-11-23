@@ -19,46 +19,21 @@
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
-	NSAttributedString *primaryAttributedString = nil;
-	NSAttributedString *secondaryAttributedString = nil;
-
-	NSString* data = [self stringValue];
-	
 	int leftMargin = 5;
+	NSString* filePath = [self stringValue];
 	
-	@try
-	{
-		primaryAttributedString = [[NSAttributedString alloc] initWithString:[data lastPathComponent]
-																  attributes:[NSDictionary dictionaryWithObjectsAndKeys:
-																			  [wmCellDelegate primaryColorWithSelected:[self isHighlighted]], NSForegroundColorAttributeName,				
-																			  [wmCellDelegate primaryFont], NSFontAttributeName, nil]];
-	}
-	@catch (NSException *exception)
-	{
-		NSLog(@"[Wing Man] WMCell drawWithFrame (trying to create primaryAttributedString): Caught %@: %@\n\n%@", [exception name], [exception reason], [exception callStackSymbols]);
-	}
-	
-	@try
-	{
-		secondaryAttributedString = [[NSAttributedString alloc] initWithString:[wmCellDelegate shortenedFilePath:data]
-																						attributes:[NSDictionary dictionaryWithObjectsAndKeys:
-																									[wmCellDelegate secondaryColorWithSelected:[self isHighlighted]], NSForegroundColorAttributeName,
-																									[wmCellDelegate secondaryFont], NSFontAttributeName, nil]];
-	}
-	@catch (NSException *exception)
-	{
-		NSLog(@"[Wing Man] WMCell drawWithFrame (trying to create secondaryAttributedString): Caught %@: %@\n\n%@", [exception name], [exception reason], [exception callStackSymbols]);
-	}
-	
-	if(primaryAttributedString)
-		[primaryAttributedString drawAtPoint:NSMakePoint(cellFrame.origin.x+leftMargin, cellFrame.origin.y)];
+	// File name
+	NSAttributedString *primaryAttributedString = [wmCellDelegate primaryTextForPath:filePath isSelected:[self isHighlighted]];
+	[primaryAttributedString drawAtPoint:NSMakePoint(cellFrame.origin.x+leftMargin, cellFrame.origin.y)];
 
-	if(secondaryAttributedString)
+	// File path (if not hidden)
+	NSAttributedString *secondaryAttributedString = [wmCellDelegate secondaryTextForPath:filePath isSelected:[self isHighlighted]];
+	if(secondaryAttributedString != nil)
 		[secondaryAttributedString drawAtPoint:NSMakePoint(cellFrame.origin.x+leftMargin, cellFrame.origin.y+cellFrame.size.height/2)];		
-
-	data = nil;
-	primaryAttributedString = nil;
+	
 	secondaryAttributedString = nil;
+	primaryAttributedString = nil;
+	filePath = nil;
 }
 
 @end

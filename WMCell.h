@@ -14,11 +14,8 @@
 
 @protocol WMCellDelegate
 
-- (NSString*) shortenedFilePath:(NSString*)fullPath;
-- (NSColor*) primaryColorWithSelected: (BOOL)selected;
-- (NSColor*) secondaryColorWithSelected: (BOOL)selected;
-- (NSFont*) primaryFont;
-- (NSFont*) secondaryFont;
+- (NSAttributedString*) primaryTextForPath:(NSString*)path isSelected:(BOOL)selected;
+- (NSAttributedString*) secondaryTextForPath:(NSString*)path isSelected:(BOOL)selected;
 
 @end
 
@@ -29,6 +26,6 @@
 	id<WMCellDelegate> wmCellDelegate;
 }
 
-@property (nonatomic, retain) IBOutlet id<WMCellDelegate> wmCellDelegate;
+@property (nonatomic, assign) IBOutlet id<WMCellDelegate> wmCellDelegate;
 
 @end
