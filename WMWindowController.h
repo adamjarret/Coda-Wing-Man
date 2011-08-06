@@ -24,6 +24,7 @@
 	BOOL alwaysOnTop;
 	BOOL checkForUpdatesAutomatically;
 	BOOL autoRefresh;
+	BOOL autoClose;
 	BOOL sortByPath;
 	
 	BOOL windowIsVisible;
@@ -45,6 +46,7 @@
 - (IBAction) toggleShowFilePath:(id)sender;
 - (IBAction) toggleAlwaysOnTop:(id)sender;
 - (IBAction) toggleAutoRefresh:(id)sender;
+- (IBAction) toggleAutoClose:(id)sender;
 - (IBAction) toggleSortByPath:(id)sender;
 - (IBAction) toggleCheckForUpdatesAutomatically:(id)sender;
 - (IBAction) doNothing:(id)sender;

@@ -14,14 +14,15 @@ Features
 * Abridge file path when file is inside the current site directory (plug-in only)
 * Choose a custom font/color for the list
 * Optionally always keep window visible
+* Optionally close window after a file is selected
 
 Known Limitation
 -----------------
-The list cannot automatically update when a tab is opened or closed in Coda. Please use the refresh button, the "Refresh Tab List" menu item and the CMD+OPT+0 key command to update the list. You can also choose to auto-refresh the list when an item is selected.
+The list cannot automatically update when a tab is opened or closed in Coda. Please use the refresh button, the "Refresh Tab List" menu item or the CMD+OPT+0 key command to update the list. You can also choose to auto-refresh the list when an item is selected.
 
 Build Instructions
 ------------------
-Open **Wing Man.xcodeproj** in Xcode.
+Open **Wing Man.xcodeproj** in Xcode 3 (does not compile in Xcode 4 because the project uses IB plugins, specifically [BWToolkit](http://brandonwalkin.com/bwtoolkit/)).
 
 Make sure **Debug** is checked under **Active Configuration** in the drop down menu on the left side of the toolbar.
 
@@ -38,7 +39,7 @@ FAQ
 
 ### Base SDK Missing ###
 
-Wing Man has only been tested on Snow Leopard. If you are trying to build it on a machine running Snow Leopard and you get this error, make sure you have the latest version of Xcode installed.
+Wing Man is built for Snow Leopard and is compatible with Lion. If you are trying to build it on a machine running 10.6 or 10.7 and you get this error, make sure you have the 10.6 SDK installed.
 
 If you're feeling brave and want to try compiling it on Leopard:
 

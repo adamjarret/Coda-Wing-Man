@@ -52,6 +52,7 @@
 		
 		alwaysOnTop = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_alwaysOnTop"]; //returns NO if not set
 		autoRefresh = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_autoRefresh"]; //returns NO if not set
+		autoClose = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_autoClose"]; //returns NO if not set
 		sortByPath = [[NSUserDefaults standardUserDefaults] boolForKey:@"kWingMan_sortByPath"]; //returns NO if not set
 		windowIsVisible = NO;
 		windowHasFocus = NO;
@@ -174,6 +175,14 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];	
 }
 
+- (IBAction) toggleAutoClose:(id)sender
+{
+	autoClose = !autoClose;
+	
+	[[NSUserDefaults standardUserDefaults] setBool:autoClose forKey:@"kWingMan_autoClose"];
+	[[NSUserDefaults standardUserDefaults] synchronize];	
+}
+
 - (IBAction) toggleSortByPath:(id)sender
 {
 	sortByPath = !sortByPath;
@@ -228,6 +237,8 @@
 		[menuItem setState:(autoRefresh ? NSOnState : NSOffState)];
 	else if([menuItem tag] == 807)
 		[menuItem setState:(sortByPath ? NSOnState : NSOffState)];
+	else if([menuItem tag] == 808)
+		[menuItem setState:(autoClose ? NSOnState : NSOffState)];
 	
 	bundle = nil;
 	
@@ -252,6 +263,9 @@
 		
 		if(autoRefresh)
 			[self reloadTabList:nil];
+
+		if(autoClose)
+			[self close];
 	}
 }
 

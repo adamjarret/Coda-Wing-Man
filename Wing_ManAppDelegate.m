@@ -18,6 +18,15 @@
 	[windowController showWindow:self];
 }
 
+// Re-open window when dock icon is clicked
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+	if(!windowController.windowIsVisible) {
+		[windowController showWindow:self];		
+	}
+	return NO;
+}
+
 - (IBAction) toggleWingMan:(id)sender
 {
 	if(sender && ([sender tag] == 222 || ([sender tag] == 111 && [sender state] == NSOnState)))
